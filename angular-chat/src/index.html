@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/ListCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/ChatCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/DetailsCtrl.js"></script>
+    <script type="text/javascript" src="js/services/Contact.js"></script>
+    <script type="text/javascript" src="js/services/Conversation.js"></script>
+    <script type="text/javascript" src="js/directives/contactDetail.js"></script>
+    <script type="text/javascript" src="js/directives/contactPreview.js"></script>
+  </head>
+  <body>
+    <div ng-app="app">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header"><a href="https://nl.linkedin.com/in/iris-salcedo-38aa2151" target="_blank" class="navbar-brand"><img src="https://pixabay.com/static/uploads/photo/2012/04/16/12/53/ghost-35852_960_720.png"/></a></div>
+        </div>
+      </nav>
+      <div ng-view="" class="view"></div>
+    </div>
+  </body>
+</html>

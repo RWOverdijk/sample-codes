@@ -1,0 +1,23 @@
+body {
+  height: 100%;
+  background: #fafafa;
+  color: #161712;
+}
+
+.navbar-brand img {
+  width: 20px;
+  height: 20px;
+}
+
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+a {
+  color: #161712;
+}
+a:hover {
+  color: #696969;
+}

@@ -8,12 +8,12 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone https://github.com/isalga/sample-codes.git
-* cd sample-codes/angular-chat
+* `git clone https://github.com/isalga/sample-codes.git`
+* `cd sample-codes/angular-chat`
 * `npm install`
 * `bower install`
 
 ## Running / Development
 
 * `gulp`
-* Visit your app at [http://localhost:8080].
+* Visit your app at [http://localhost:8080](http://localhost:8080).

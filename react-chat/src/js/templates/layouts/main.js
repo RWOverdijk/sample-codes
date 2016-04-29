@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/layouts/NavBar.js'
 
-export default React.createClass({
+export default class Main extends React.Component{
   
   render() {
     return(
@@ -13,4 +13,4 @@ export default React.createClass({
       </div>
     )
   }
-});
+};

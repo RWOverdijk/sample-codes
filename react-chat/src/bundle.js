@@ -72,7 +72,7 @@
 	
 	var _ChatContainer2 = _interopRequireDefault(_ChatContainer);
 	
-	var _DetailsContainer = __webpack_require__(240);
+	var _DetailsContainer = __webpack_require__(241);
 	
 	var _DetailsContainer2 = _interopRequireDefault(_DetailsContainer);
 	
@@ -26334,6 +26334,10 @@
 	
 	var _Message2 = _interopRequireDefault(_Message);
 	
+	var _MessageInput = __webpack_require__(240);
+	
+	var _MessageInput2 = _interopRequireDefault(_MessageInput);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26350,13 +26354,28 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Chat).call(this));
 	
-	    _this.sate = {
-	      'messages': [{ 'time': '01/01/2016 10:20:45', 'content': 'Halloooo', 'own': false }, { 'time': '01/01/2016 10:21:45', 'content': 'Hoe was gisteren film?', 'own': false }, { 'time': '01/01/2016 10:21:50', 'content': 'Ei', 'own': true }, { 'time': '01/01/2016 10:22:20', 'content': 'pfff, heel saai', 'own': true }, { 'time': '01/01/2016 10:22:45', 'content': 'echt ? Het is fantastisch!!', 'own': false }]
+	    _this.state = {
+	      'messages': [{ 'time': '01/01/2016 10:20:45', 'content': 'Halloooo', 'own': false }, { 'time': '01/01/2016 10:21:45', 'content': 'Hoe was gisteren film?', 'own': false }, { 'time': '01/01/2016 10:21:50', 'content': 'Ei', 'own': true }, { 'time': '01/01/2016 10:22:20', 'content': 'pfff, heel saai', 'own': true }, { 'time': '01/01/2016 10:22:45', 'content': 'echt ? Het is fantastisch!!', 'own': false }],
+	      'newMessage': ''
 	    };
 	    return _this;
 	  }
 	
 	  _createClass(Chat, [{
+	    key: 'updateNewMessage',
+	    value: function updateNewMessage(event) {
+	      this.setState({ 'newMessage': event.target.value });
+	    }
+	  }, {
+	    key: 'addMessage',
+	    value: function addMessage(message) {
+	      this.state.messages.push({ 'time': new Date(), 'content': this.state.newMessage, 'own': true });
+	      this.setState({
+	        'messages': this.state.messages,
+	        'newMessage': ''
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var contactName = this.props.params.name;
@@ -26388,27 +26407,14 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'panel-body' },
-	          this.sate.messages.map(function (message, index) {
+	          this.state.messages.map(function (message, index) {
 	            return _react2.default.createElement(_Message2.default, { key: index, data: message });
 	          })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'panel-footer' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-group' },
-	            _react2.default.createElement('input', { className: 'form-control input-sm chat_input', placeholder: 'Write your message here...', type: 'text' }),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'input-group-btn' },
-	              _react2.default.createElement(
-	                'button',
-	                { className: 'btn btn-success btn-sm', id: 'btn-chat' },
-	                'Send'
-	              )
-	            )
-	          )
+	          _react2.default.createElement(_MessageInput2.default, { addMessage: this.addMessage.bind(this), updateNewMessage: this.updateNewMessage.bind(this), newMessage: this.state.newMessage })
 	        )
 	      );
 	    }
@@ -26497,6 +26503,66 @@
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MessageInput = function (_React$Component) {
+	  _inherits(MessageInput, _React$Component);
+	
+	  function MessageInput() {
+	    _classCallCheck(this, MessageInput);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MessageInput).apply(this, arguments));
+	  }
+	
+	  _createClass(MessageInput, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "input-group" },
+	        _react2.default.createElement("input", { className: "form-control input-sm chat_input", placeholder: "Write your message here...", type: "text",
+	          onChange: this.props.updateNewMessage, value: this.props.newMessage }),
+	        _react2.default.createElement(
+	          "span",
+	          { className: "input-group-btn" },
+	          _react2.default.createElement(
+	            "button",
+	            { className: "btn btn-success btn-sm", id: "btn-chat", onClick: this.props.addMessage },
+	            "Send"
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return MessageInput;
+	}(_react2.default.Component);
+	
+	exports.default = MessageInput;
+	;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -26511,7 +26577,7 @@
 	
 	var _reactRouter = __webpack_require__(159);
 	
-	var _ContactDetails = __webpack_require__(241);
+	var _ContactDetails = __webpack_require__(242);
 	
 	var _ContactDetails2 = _interopRequireDefault(_ContactDetails);
 	
@@ -26570,7 +26636,7 @@
 	;
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

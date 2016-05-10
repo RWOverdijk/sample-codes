@@ -10,6 +10,10 @@ You will need the following things properly installed on your computer.
 
 * `git clone https://github.com/isalga/sample-codes.git`
 * `cd sample-codes/aurelia-sails-chat`
+* `npm install`
+* `cd assets`
+* `npm install`
+* `jspm install -y`
 
 ## Running / Development
 

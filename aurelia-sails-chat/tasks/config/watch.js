@@ -17,6 +17,7 @@
 module.exports = function(grunt) {
 
   grunt.config.set('watch', {
+
     assets: {
 
       // Assets to watch:
@@ -24,6 +25,9 @@ module.exports = function(grunt) {
 
       // When assets are changed:
       tasks: ['syncAssets' , 'linkAssets' ]
+    },
+    options: {
+        livereload: true
     }
   });
 

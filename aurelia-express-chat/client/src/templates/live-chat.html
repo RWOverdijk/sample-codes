@@ -5,8 +5,8 @@
 		<div class="container-fluid">
 			<div class="panel panel-default" show.bind="!config.chatOn">
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-4">
+					<div class="row-centered">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-centered">
 							Join this chatroom as:
 							<span show.bind="userService.fetchingNickName">
 								wait (generating nickname)
@@ -14,15 +14,11 @@
 							${user.nickName}
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-1 col-md-offset-4">
+					<div class="row-centered">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-centered">
 							<form role="form" submit.delegate="enter()">
-								<div class="input-group">
-									<a href="?#/settings" class="btn btn-link btn-sm">change nickname</a>
-									<span class="input-group-btn">
-										<button type="submit" class="btn btn-primary btn-sm">Yes</button>
-									</span>
-								</div>
+								<a href="?#/settings" class="btn btn-link btn-sm">change nickname</a>
+								<button type="submit" class="btn btn-primary btn-sm">Yes</button>
 							</form>
 						</div>
 					</div>

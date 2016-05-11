@@ -27,19 +27,13 @@ export class LiveChat {
       this.enter();
     }
     if(Config.voiceMode) {
-      var recognition = new webkitSpeechRecognition();
-      recognition.lang = "en-GB";
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.onresult = function(event, newMessage) { 
-        for (var i = event.results.length - 1; i >= 0; i--) {
-          console.log(this.newMessage);
-          console.log(event.results[i][0].transcript);
-          document.getElementById('speech-text').innerHTML = document.getElementById('speech-text').innerHTML + event.results[i][0].transcript;
-          this.newMessage = '' + event.results[i][0].transcript;
-        };
+      try{
+        this.startSpeechRecognition();
+      } catch(err) {
+        alert("Seem that your browser doesn't support speech recognition");
+        console.log(err);
+        Config.voiceMode = false;
       }
-      recognition.start();
     }
   }
 
@@ -60,8 +54,24 @@ export class LiveChat {
       console.log('recieved message');
       this.messages = data;
       this.chatService.chat.messages = data;
-      var mBox = document.getElementById("messages-box");
+      let mBox = document.getElementById("messages-box");
       mBox.scrollTop = (mBox.scrollHeight);
     }.bind( this ));
+  }
+
+  startSpeechRecognition(){
+    let recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-GB";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.onresult = function(event, newMessage) { 
+      for (let i = event.results.length - 1; i >= 0; i--) {
+        // console.log(this.newMessage);
+        console.log(event.results[i][0].transcript);
+        document.getElementById('speech-text').innerHTML = document.getElementById('speech-text').innerHTML + event.results[i][0].transcript;
+        this.newMessage = '' + event.results[i][0].transcript;
+      };
+    }
+    recognition.start();
   }
 }

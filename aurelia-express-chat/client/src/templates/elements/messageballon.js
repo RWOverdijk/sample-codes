@@ -1,7 +1,5 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-
-// Services
-import { UserService } from '../../services/UserService';
+import { UserService } from '../../services/UserService';			// Services
 
 @customElement('messageballon')
 @bindable('data')

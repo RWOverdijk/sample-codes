@@ -1,0 +1,32 @@
+<template>
+	<section class="au-animate">
+		<div class="container-fluid">
+			<div show.bind="!finded">
+				<div class="alert alert-warning">
+					User not finded
+				</div>
+			</div>
+			<div show.bind="finded">
+				<h2>${nickName}</h2>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-lg-6">
+						<label for="fn">Nickname</label>
+						<span>${firstName}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-lg-6">
+						<label for="ln">Last Name</label>
+						<span>${lastName}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-lg-12">
+						<label for="comment">Description:</label>
+						<span>${description}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>

@@ -1,25 +1,30 @@
 import { inject } from 'aurelia-framework';
+import { User } from '../models/User.js'; 		// Models
+import { SocketService } from './SocketService'; 	// Services
 
-// Configs
-import { Config } from '../configs/Config';
-
-// Model
-import { User } from '../models/User.js';
-
-// Services
-import { HTTPService } from './HTTPService';
-
-@inject(HTTPService, Config)
+@inject(SocketService)
 export class UserService {
 
-	constructor(HTTPService, Config) {
-		this.httpClient = HTTPService.httpClient;
-		HTTPService.getUserName();
+	constructor(SocketService) {
+		this.socket = SocketService.socket;
 		this.user = new User({
+			id: '',
 			nickName : '',
 			firstName : '',
 			lastName : '',
 			description : ''
 		});
+		this.getUserName();
+	}
+
+	getUserName() {
+
+		this.fetchingNickName = true;
+		this.socket.emit('get-nick-name', null);
+		this.socket.on('recieve-nick-name', function(data) {
+			this.fetchingNickName = false;
+			this.user.nickName = data.name;
+			this.user.id = data.id;
+		}.bind( this ));
 	}
 }

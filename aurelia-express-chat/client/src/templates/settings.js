@@ -1,11 +1,7 @@
 import { inject } from 'aurelia-framework';
-
-// Configs
-import { Config } from '../configs/Config';
-
-// Services
-import { SocketService } from '../services/SocketService';
-import { UserService } from '../services/UserService';
+import { Config } from '../configs/Config';					// Configs
+import { SocketService } from '../services/SocketService';	// Services
+import { UserService } from '../services/UserService';		//
 
 @inject(SocketService, UserService, Config)
 export class Settings {
@@ -30,5 +26,6 @@ export class Settings {
 		this.user.lastName = this.lastName;
 		this.user.description = this.description;
 		this.config.voiceMode = this.voiceMode;
+		this.socket.emit('update-user', this.user);
 	}
 }

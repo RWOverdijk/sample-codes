@@ -1,0 +1,12 @@
+<template>
+	<span if.bind="own">
+		<div class="msg usermsg col-xs-4 col-sm-4 col-lg-4" style="float: right">
+		<b><i>${data.nickName}:</i></b> ${data.content}
+		</div>
+	</span>
+	<span if.bind="!own">
+		<div class="msg contactmsg col-xs-4 col-sm-4 col-lg-4">
+			<b><i>${data.nickName}:</i></b> ${data.content}
+		</div>
+	</span>
+</template>

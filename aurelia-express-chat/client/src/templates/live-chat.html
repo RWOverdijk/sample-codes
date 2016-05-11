@@ -1,0 +1,32 @@
+<template>
+	<require from="/dist/templates/elements/messageballon"></require>
+	<section class="au-animate">
+		<h2></h2>
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row ng-scope" repeat.for="message of messages">
+						<messageballon data.bind="message"></messageballon>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<form role="form" submit.delegate="sendMessage()">
+						<div class="input-group">
+							<input type="text" value.bind="newMessage" class="form-control input-sm chat_input" placeholder="..." />
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-success btn-sm">Send</button>
+							</span>
+						</div>
+					</form>
+					<form role="form" submit.delegate="enter()">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-success btn-sm">enter</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>

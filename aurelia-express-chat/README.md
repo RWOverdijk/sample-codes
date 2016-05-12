@@ -5,6 +5,7 @@ You will need the following things properly installed on your computer.
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Express](http://expressjs.com/) `npm install -g express`
+* [jspm](http://jspm.io/) `npm install -g jspm`
 
 ## Installation
 
@@ -17,5 +18,5 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `npm start`
+* `node server/main.js`
 * Visit your app at [http://localhost:8080](http://localhost:8080).

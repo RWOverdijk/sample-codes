@@ -1,3 +1,7 @@
+A chat using [Aureliajs](http://aurelia.io/) in the frontend and [Expresjs](http://expressjs.com/) on the backend.
+ - Real time comunication with [Socket.io](https://github.com/socketio/socket.io).
+ - Voice recognition for webkit based browsers(Chrome, Opera...).
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.

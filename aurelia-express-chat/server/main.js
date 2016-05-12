@@ -32,6 +32,8 @@ io.on('connection', function(socket) {
 			lastName : '',
 			description : ''
 		})
+		console.log(`emit recieve-nick-name ${nickname} id ${users.length}`);
+		console.log(users);
 		socket.emit('recieve-nick-name', {
 			id: (users.length),
 			name: nickname

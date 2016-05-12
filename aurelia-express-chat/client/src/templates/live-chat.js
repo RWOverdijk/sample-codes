@@ -64,14 +64,11 @@ export class LiveChat {
     recognition.lang = "en-GB";
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.onresult = function(event, newMessage) { 
-      for (let i = event.results.length - 1; i >= 0; i--) {
-        // console.log(this.newMessage);
-        console.log(event.results[i][0].transcript);
-        document.getElementById('speech-text').innerHTML = document.getElementById('speech-text').innerHTML + event.results[i][0].transcript;
-        this.newMessage = '' + event.results[i][0].transcript;
-      };
-    }
+    recognition.onresult = (function(event) { 
+      if (event.results[event.results.length-1].isFinal) {
+        this.newMessage = this.newMessage + event.results[event.results.length-1][0].transcript;
+      }
+    }).bind(this);
     recognition.start();
   }
 }
